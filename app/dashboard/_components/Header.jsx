@@ -1,6 +1,7 @@
 "use client";
 
 import { UserDetailContext } from '@/app/_context/UserDetailContext';
+import { Button } from '@/components/ui/button';
 import { UserButton } from '@clerk/nextjs';
 import Image from 'next/image'
 import React, { useContext } from 'react'
@@ -14,6 +15,7 @@ function Header(){
         <h2 className="font bold-text-lg">AesthetIQ</h2>
       </div>
 
+      <Button variant='ghost' className="rounded-full text-primary">Buy more credits</Button>
       <div className='flex gap-2 items-center'>
         <div className="flex gap-2 p-1 items-center bg-slate-200 px-3 rounded-full">
           <Image src={'/star.png'} width={20} height={20}/>
