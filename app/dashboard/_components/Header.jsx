@@ -18,7 +18,7 @@ function Header(){
       <Button variant='ghost' className="rounded-full text-primary">Buy more credits</Button>
       <div className='flex gap-2 items-center'>
         <div className="flex gap-2 p-1 items-center bg-slate-200 px-3 rounded-full">
-          <Image src={'/star.png'} width={20} height={20}/>
+          <Image src={'/star.png'} width={20} height={20} alt='star'/>
           <h2>{userDetail?.credits}</h2>
         </div>
         <UserButton />
