@@ -3,10 +3,11 @@
 import { useUser } from "@clerk/nextjs";
 import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
+import { UserDetailContext } from "./_context/UserDetailContext";
 
 function Provider({ children }) {
   const { user } = useUser();
-  const [userData, setUserData] = useState(null);
+  const [userDetail, setUserDetail] = useState([]);
 
   const VerifyUser = useCallback(async () => {
     if (user) {
@@ -14,7 +15,7 @@ function Provider({ children }) {
         const dataResult = await axios.post("/api/verify-user", {
           user: user,
         });
-        setUserData(dataResult.data.result);
+        setUserDetail(dataResult.data.result);
       } catch (error) {
         console.error("Error verifying user:", error);
       }
@@ -26,7 +27,9 @@ function Provider({ children }) {
   }, [user, VerifyUser]);
 
   return (
+    <UserDetailContext.Provider value={{userDetail, setUserDetail}}>
       <div>{children}</div>
+    </UserDetailContext.Provider>
   );
 }
 
